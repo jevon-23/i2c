@@ -1,2 +1,7 @@
-./*.bak*
-./*.swp*
+src/*.swp
+CMakeFiles
+CMakeCache.txt
+MakeFile
+cmake_install.cmake
+.*
+i2c
