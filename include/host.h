@@ -15,4 +15,9 @@ host *new_host(component *comp, client **clients, int num_clients);
 
 void send_message(host *h);
 void update(host *h);
+
+
+/* For testing lib, make precompile flag? */
+
+void start_message(host *h);
 #endif

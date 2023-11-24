@@ -68,3 +68,18 @@ target_link_libraries(
 )
 
 gtest_discover_tests(client_test)
+
+add_executable(
+  host_test
+  src/host/host_test.cc
+  #dependencies
+  src/host/host.c
+  src/client/client.c
+  src/components/component.c
+)
+target_link_libraries(
+  host_test
+  GTest::gtest_main
+)
+
+gtest_discover_tests(host_test)

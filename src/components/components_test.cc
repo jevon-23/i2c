@@ -25,12 +25,13 @@ TEST(component_tests, new_comp) {
   message *msg = new_message();
   enum rw *rw_bus = new_rw();
 
-  component *c = new_component(0x0, sda, scl, msg, rw_bus);
+  component *c = new_component(0xbe, sda, scl, msg, rw_bus);
   EXPECT_EQ(*c->sda, true);
   EXPECT_EQ(*c->scl, true);
   EXPECT_EQ(*c->r_w, READ);
   EXPECT_EQ(c->r_buff_len, 0);
   EXPECT_EQ(c->w_buff_len, 0);
+  EXPECT_EQ(c->address, 0xbe);
 }
 
 TEST(component_tests, comp_toggle_scl) {
