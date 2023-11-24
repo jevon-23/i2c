@@ -1,4 +1,5 @@
 #include "../../include/components.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 /* Message functionality */
@@ -28,6 +29,11 @@ component *new_component(uint8_t address, bool *sda, bool *scl,
                          message *msg_bus, enum rw *rw_bus) {
   component *c = (component *)malloc(sizeof(component));
 
+  if (address > 0x7f) {
+    printf("reset address to something below 0x7f, invalid address: %x\n",
+           address);
+    exit(-1);
+  }
   c->address = address;
   c->sda = sda;
   c->scl = scl;

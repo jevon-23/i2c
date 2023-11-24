@@ -20,4 +20,7 @@ void update(host *h);
 /* For testing lib, make precompile flag? */
 
 void start_message(host *h);
+void send_address(host *h, uint8_t address);
+void send_rw(host *h, enum rw r_w);
+
 #endif

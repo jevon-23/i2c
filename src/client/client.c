@@ -20,11 +20,11 @@ void update_client(client *c) {
   /* If we are not the chosen client, or we are not currently checking to see
    * for destination address (EXP_ADRR) */
 
-  if (!c->chosen && *c->comp->msg->state != RW)
+  if (!c->chosen && *c->comp->msg->state != EXP_ADDR)
     return;
 
   switch (*c->comp->msg->state) {
-  case RW:
+  case EXP_ADDR:
     if (c->comp->address == c->comp->msg->addr)
       c->chosen = true;
     break;
@@ -44,7 +44,6 @@ void update_client(client *c) {
     comp_set_sda(c->comp, false);
     comp_update_message_state(c->comp, ACK_NACK2);
     break;
-
   case DATA2:
     if (*c->comp->r_w == READ) {
       /* read the last byte of the message, store in read buff */
@@ -57,7 +56,7 @@ void update_client(client *c) {
     comp_update_message_state(c->comp, ACK_NACK3);
     c->chosen = false;
     break;
-  case EXP_ADDR:
+  case RW:
   case START:
   case ACK_NACK2:
   case ACK_NACK3:

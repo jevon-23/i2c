@@ -35,7 +35,7 @@ int main(int arg, char *argv[]) {
   message *msg = new_message();
 
   component *ch = new_component(0x0, sda, scl, msg, rw_bus);
-  component *cs1 = new_component(0xff, sda, scl, msg, rw_bus);
+  component *cs1 = new_component(0x7f, sda, scl, msg, rw_bus);
   component *cs2 = new_component(0x24, sda, scl, msg, rw_bus);
 
   client *c1 = new_client(cs1);
