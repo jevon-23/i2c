@@ -40,10 +40,12 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(googletest)
 enable_testing()
+include(GoogleTest)
 
 add_executable(
   components_test
   src/components/components_test.cc
+  #dependencies
   src/components/component.c
 )
 target_link_libraries(
@@ -51,5 +53,18 @@ target_link_libraries(
   GTest::gtest_main
 )
 
-include(GoogleTest)
 gtest_discover_tests(components_test)
+
+add_executable(
+  client_test
+  src/client/client_test.cc
+  #dependencies
+  src/client/client.c
+  src/components/component.c
+)
+target_link_libraries(
+  client_test
+  GTest::gtest_main
+)
+
+gtest_discover_tests(client_test)
