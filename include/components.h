@@ -27,11 +27,6 @@ enum msg_state {
     STOP
 };
 
-enum rw {
-    READ,
-    WRITE,
-};
-
 /* Message structure */
 typedef struct message {
     enum msg_state *state;
@@ -41,6 +36,15 @@ typedef struct message {
 
 message *new_message();
 void reset_message_bus(message *msg);
+
+/* RW Enum */
+enum rw {
+    READ,
+    WRITE,
+};
+
+enum rw *new_rw();
+
 
 /* Component structure */
 typedef struct component {

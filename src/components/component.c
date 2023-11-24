@@ -17,6 +17,12 @@ void reset_message_bus(message *msg) {
   msg->addr = 0x0;
 }
 
+enum rw *new_rw() {
+  enum rw *r_w = (enum rw *)malloc(sizeof(enum rw));
+  *r_w = READ;
+  return r_w;
+}
+
 /* Componoent functionality */
 component *new_component(uint8_t address, bool *sda, bool *scl,
                          message *msg_bus, enum rw *rw_bus) {
@@ -36,7 +42,6 @@ void comp_set_sda(component *comp, bool bit) { *comp->sda = bit; }
 
 void comp_update_message(component *comp, bool bit) {
   *comp->msg->msg = (*(comp->msg->msg) << 1) | bit;
-  return;
 }
 
 void comp_update_message_state(component *comp, enum msg_state state) {

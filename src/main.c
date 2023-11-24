@@ -28,7 +28,7 @@ int main(int arg, char *argv[]) {
   *sda = true;
   *scl = true;
 
-  enum rw *rw_bus = (enum rw *)malloc(sizeof(enum rw));
+  enum rw *rw_bus = new_rw();
   *rw_bus = READ;
 
   // clock *clock = new_clock(scl);
